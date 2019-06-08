@@ -6,7 +6,7 @@ Cloud à sua escolha.
 Muitas equipes buscam construir um ambiente que suporte um modelo de entrega ágil. Parte da resposta
 do movimento DevOps para essa necessidade é a construção de pipelines de entrega contínua. Assim:
 
-## TASK 1 (Containerizar petcilnic)
+## TASK 1 (Dockerizar)
 Crie um fork do projeto petclinic (https://github.com/spring-projects/spring-petclinic) 
 para sua conta no GitHub. Configure a aplicação para usar o banco MYSQL ao invés do HSQLDB (banco in-memory 
 configurado por padrão na aplicaçãp).
