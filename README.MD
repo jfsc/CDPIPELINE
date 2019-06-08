@@ -1,4 +1,4 @@
-ATIVIDADE (DEVOPS JENKINS)
+# TASK JENKINS CI/CD COM DOCKER
 Construir um ambiente de entrega contínua para uma aplicação. A aplicação utilizada é a 
 Spring PetClinic (petclinic) e a infraestrutura deve ser sua máquina local ou qualquer 
 Cloud à sua escolha.
