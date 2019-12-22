@@ -1,9 +1,27 @@
-mysql:
-  image: mysql:5.7
-  ports:
-    - "3306:3306"
-  environment:
-    - MYSQL_ROOT_PASSWORD=petclinic
-    - MYSQL_DATABASE=petclinic
-  volumes:
-    - "./conf.d:/etc/mysql/conf.d:ro"
+version: "3.7"
+
+networks:
+  springlab:
+    driver: bridge
+
+services:
+  petclinic:
+    image: romuloslv/petclinic
+    container_name: petclinic
+    hostname: petclinic
+    ports:
+      - "8080:8080"
+    networks:
+      - springlab
+
+  mysql:
+    image: mysql:5.7.8
+    container_name: mysql
+    hostname: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=petclinic
+      - MYSQL_DATABASE=petclinic
+    ports:
+      - "3306:3306"
+    networks:
+      - springlab
