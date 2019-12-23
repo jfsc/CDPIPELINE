@@ -16,7 +16,36 @@ docker run --name mysql \
            -p 3306:3306 \
            -d mysql:5.7.8 \
 && \
- docker run --name petclinic \
-            --network springlab \
-            -p 8080:8080 \
-            -d petclinic)
+docker run --name petclinic \
+           --network springlab \
+           -p 8080:8080 \
+           -d petclinic \
+&& \
+export DOCKERHUB_USERNAME="yourusername"
+
+error() {
+    if [ $? != 0 ]; then
+        echo "Error!"
+        exit 122
+    fi
+}
+
+tag() {
+    echo "=> Tagging petclinic"
+    docker tag petclinic $(echo $DOCKERHUB_USERNAME)/petclinic
+    echo "=> Tagged petclinic"
+}
+
+push() {
+    echo "=> Pushing petclinic"
+    docker push $(echo $DOCKERHUB_USERNAME)/petclinic
+    echo "=> Pushed petclinic"
+}
+
+tag
+error
+push
+error
+echo
+
+exit 0)
