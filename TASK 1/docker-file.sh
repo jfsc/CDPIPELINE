@@ -20,26 +20,13 @@ docker run --name petclinic \
            --network springlab \
            -p 8080:8080 \
            -d img-petclinic \
-&& \
-echo "=> Removing <none> images" \
-&& \
-docker rmi $(docker images -f "dangling=true" -q) \
-&& \
-export DOCKERHUB_USERNAME=${1} \
 
-tag() {
-    echo "=> Tagging petclinic"
-    docker tag img-petclinic $(echo $DOCKERHUB_USERNAME)/petclinic
-    echo "=> Tagged petclinic"
-}
-
-push() {
-    echo "=> Pushing petclinic"
-    docker push $(echo $DOCKERHUB_USERNAME)/petclinic
-    echo "=> Pushed petclinic"
-}
-
-tag; push;
-echo
-
-exit 0)
+echo "=> Removing <none> images"
+docker rmi $(docker images -f "dangling=true" -q)
+export DOCKERHUB_USERNAME=${1}
+echo "=> Tagging petclinic"
+docker tag img-petclinic $(echo $DOCKERHUB_USERNAME)/petclinic
+echo "=> Tagged petclinic"
+echo "=> Pushing petclinic"
+docker push $(echo $DOCKERHUB_USERNAME)/petclinic
+echo "=> Pushed petclinic")
