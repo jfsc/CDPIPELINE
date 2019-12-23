@@ -1,7 +1,15 @@
 # RUN Docker File
 
+Log in to your Docker Hub repository
+
 ```bash
-$ bash docker-file.sh
+$ docker login
+```
+
+Enter Docker Hub user when running script
+
+```bash
+$ bash docker-file.sh romuloslv
 ```
 
 # RUN Docker Compose
