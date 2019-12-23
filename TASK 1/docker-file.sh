@@ -25,16 +25,9 @@ docker rmi $(docker images -f "dangling=true" -q) \
 && \
 export DOCKERHUB_USERNAME="yourusername"
 
-error() {
-    if [ $? != 0 ]; then
-        echo "Error!"
-        exit 122
-    fi
-}
-
 tag() {
     echo "=> Tagging petclinic"
-    docker tag petclinic $(echo $DOCKERHUB_USERNAME)/petclinic
+    docker tag img-petclinic $(echo $DOCKERHUB_USERNAME)/petclinic
     echo "=> Tagged petclinic"
 }
 
@@ -44,10 +37,7 @@ push() {
     echo "=> Pushed petclinic"
 }
 
-tag
-error
-push
-error
+tag; push;
 echo
 
 exit 0)
