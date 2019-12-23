@@ -7,6 +7,7 @@ FROM maven:3.6-jdk-8 as BUILD
 ARG project
 WORKDIR /app
 COPY --from=CLONE /app/${project} /app
+RUN echo "=> Build base image"
 RUN mvn package -DskipTests=true
 
 FROM openjdk:8-jre-alpine
