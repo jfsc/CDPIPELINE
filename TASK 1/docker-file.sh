@@ -17,12 +17,14 @@ docker run --name mysql \
            -p 3306:3306 \
            -d mysql:5.7.8 \
 
+echo "=> Database turn off"
 sleep 10
+echo "=> Database turn on"
 echo "=> Build application image"
 docker run --name petclinic \
            --network springlab \
            -p 8080:8080 \
-           img-petclinic \
+           -d img-petclinic \
 
 echo "=> Removing <none> images"
 docker rmi $(docker images -f "dangling=true" -q)
