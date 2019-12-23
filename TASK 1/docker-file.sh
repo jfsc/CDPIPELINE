@@ -19,7 +19,9 @@ docker run --name mysql \
 docker run --name petclinic \
            --network springlab \
            -p 8080:8080 \
-           -d petclinic \
+           -d img-petclinic \
+&& \
+docker rmi $(docker images -f "dangling=true" -q) \
 && \
 export DOCKERHUB_USERNAME="yourusername"
 
