@@ -21,6 +21,8 @@ docker run --name petclinic \
            -p 8080:8080 \
            -d img-petclinic \
 && \
+echo "=> Removing <none> images" \
+&& \
 docker rmi $(docker images -f "dangling=true" -q) \
 && \
 export DOCKERHUB_USERNAME=${1} \
