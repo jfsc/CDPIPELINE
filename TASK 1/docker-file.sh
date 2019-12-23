@@ -23,7 +23,8 @@ docker run --name petclinic \
 && \
 docker rmi $(docker images -f "dangling=true" -q) \
 && \
-export DOCKERHUB_USERNAME="yourusername"
+# change your user
+export DOCKERHUB_USERNAME="yourusername" \
 
 tag() {
     echo "=> Tagging petclinic"
