@@ -21,8 +21,6 @@ services:
     image: romuloslv/petclinic
     container_name: petclinic
     hostname: petclinic
-    depends_on:
-      - mysql
     ports:
       - "8080:8080"
     networks:
