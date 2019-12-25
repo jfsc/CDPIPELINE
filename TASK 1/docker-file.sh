@@ -26,9 +26,17 @@ docker run --name petclinic \
 echo "=> Removing <none> images"
 docker rmi $(docker images -f "dangling=true" -q)
 export DOCKERHUB_USERNAME=${1}
+
 echo "=> Tagging petclinic"
 docker tag img-petclinic $(echo $DOCKERHUB_USERNAME)/petclinic
 echo "=> Tagged petclinic"
+
 echo "=> Pushing petclinic"
 docker push $(echo $DOCKERHUB_USERNAME)/petclinic
-echo "=> Pushed petclinic")
+echo "=> Pushed petclinic"
+
+echo
+docker ps -a --format "{{.ID}}" | while read -r line ; do
+	echo $line $(docker inspect --format "{{ .Name }} {{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}" \
+	$line | sed 's/\///'):$(docker port "$line" | grep -o "0.0.0.0:.*" | cut -f2 -d:)
+done)
