@@ -35,7 +35,7 @@ docker run -d --name jenkins \
            -p 5000:5000 \
            -v jenkins_data:/var/jenkins_home \
            -v /var/run/docker.sock:/var/run/docker.sock \
-	   romuloslv/jenkins
+       romuloslv/jenkins
 
 docker build -t romuloslv/sonarqube \
              -f Docker-Sonarqube .
