@@ -4,25 +4,25 @@ time \
 (echo "=> Create application network"
 docker network create task1 \
 
+echo "=> Build database image"
+docker run -d --name mysql \
+           --network task1 \
+           -e MYSQL_ROOT_PASSWORD=petclinic \
+           -e MYSQL_DATABASE=petclinic \
+           -p 3306:3306 \
+           mysql:5.7.8
+
 docker build --build-arg url=https://github.com/romuloslv/spring-petclinic.git \
              --build-arg project=spring-petclinic \
              --build-arg artifactid=spring-petclinic \
              --build-arg version=2.2.0 \
              -t img-petclinic - < Dockerfile
 
-echo "=> Build database image"
-docker run --name mysql \
-           --network task1 \
-           -e MYSQL_ROOT_PASSWORD=petclinic \
-           -e MYSQL_DATABASE=petclinic \
-           -p 3306:3306 \
-           -d mysql:5.7.8
-
 echo "=> Build application image"
-docker run --name petclinic \
+docker run -d --name petclinic \
            --network task1 \
            -p 8080:8080 \
-           -d img-petclinic
+           img-petclinic
 
 echo "=> Removing <none> images"
 docker rmi $(docker images -f "dangling=true" -q)

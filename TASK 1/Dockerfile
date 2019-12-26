@@ -18,4 +18,4 @@ WORKDIR /app
 COPY --from=BUILD /app/target/${artifact} /app
 EXPOSE 8080
 ENTRYPOINT ["sh", "-c"]
-CMD ["sleep 15 && java -Dspring.profiles.active=mysql -jar ${artifact}"]
+CMD ["java -Dspring.profiles.active=mysql -jar ${artifact}"]
