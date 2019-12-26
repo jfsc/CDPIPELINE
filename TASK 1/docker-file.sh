@@ -1,27 +1,28 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
-time (echo "=> Create application network"
-docker network create springlab \
+time \
+(echo "=> Create application network"
+docker network create task1 \
 
 docker build --build-arg url=https://github.com/romuloslv/spring-petclinic.git \
              --build-arg project=spring-petclinic \
              --build-arg artifactid=spring-petclinic \
              --build-arg version=2.2.0 \
-             -t img-petclinic - < Dockerfile \
+             -t img-petclinic - < Dockerfile
 
 echo "=> Build database image"
 docker run --name mysql \
-           --network springlab \
+           --network task1 \
            -e MYSQL_ROOT_PASSWORD=petclinic \
            -e MYSQL_DATABASE=petclinic \
            -p 3306:3306 \
-           -d mysql:5.7.8 \
+           -d mysql:5.7.8
 
 echo "=> Build application image"
 docker run --name petclinic \
-           --network springlab \
+           --network task1 \
            -p 8080:8080 \
-           -d img-petclinic \
+           -d img-petclinic
 
 echo "=> Removing <none> images"
 docker rmi $(docker images -f "dangling=true" -q)
