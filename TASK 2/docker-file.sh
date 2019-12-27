@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #!/usr/bin/env sh
 
 time \
@@ -127,4 +126,3 @@ docker run -d --name sonarqube \
            -v sonarqube_logs:/opt/sonarqube/logs \
            -v sonarqube_data:/opt/sonarqube/data \
            romuloslv/sonarqube)
->>>>>>> 70181a6c485c057223f07cb7761ce91ead8666e3
