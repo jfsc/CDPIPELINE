@@ -26,14 +26,14 @@ docker run -d --name petclinic \
 
 echo "=> Removing <none> images"
 docker rmi $(docker images -f "dangling=true" -q)
-export DOCKERHUB_USERNAME=${1}
+export USERNAME=${1}
 
 echo "=> Tagging petclinic"
-docker tag img-petclinic $(echo $DOCKERHUB_USERNAME)/petclinic
+docker tag img-petclinic $(echo $USERNAME)/petclinic
 echo "=> Tagged petclinic"
 
 echo "=> Pushing petclinic"
-docker push $(echo $DOCKERHUB_USERNAME)/petclinic
+docker push $(echo $USERNAME)/petclinic
 echo "=> Pushed petclinic"
 
 echo
