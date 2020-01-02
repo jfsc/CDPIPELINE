@@ -48,3 +48,11 @@ Configure according to your scenario:
 
 * SonarQube servers
 * Sonatype Nexus
+
+## HUB
+
+https://hub.docker.com/r/romuloslv/jenkins
+
+https://hub.docker.com/r/romuloslv/sonarqube
+
+https://hub.docker.com/r/romuloslv/nexus
