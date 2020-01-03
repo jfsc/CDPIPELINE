@@ -60,10 +60,10 @@ docker build -t img-nexus\
 
 echo "=> Building nexus application"
 docker run -d --name nexus\
-   --network task2\
-   -v nexus_data:/nexus-data\
-   -p 8081:8081\
-   img-nexus
+           --network task2\
+           -v nexus_data:/nexus-data\
+           -p 8081:8081\
+           img-nexus
 
 echo
 docker ps -a --format "{{.ID}}" | while read -r line ; do
