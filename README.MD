@@ -42,4 +42,4 @@ permita que o usuário escreva a versão da imagem docker que deseja realizar o 
 Atualize a imagem do Jenkins, em sua conta do Docker Hub, contendo a versão onde vc adicionou o Job.
 
 ### EVIDÊNCIAS:
-- link e versão da nova imagem no Docker Hub.
+- Link e versão da nova imagem no DockerHub.
